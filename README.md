@@ -1,1 +1,1 @@
-# OOSE
+# OOSE Class

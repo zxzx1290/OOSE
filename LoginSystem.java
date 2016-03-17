@@ -26,7 +26,7 @@ class LoginPage extends JFrame{
         label2 = new JLabel("password");
         password = new JTextField(10);
         submit = new JButton("login");
-        msg = new JLabel("");
+        msg = new JLabel("click submit to login");
         loginPanel.add(label1);
         loginPanel.add(uid);
         loginPanel.add(label2);
@@ -94,6 +94,9 @@ class LoginController {
 }
 
 class DBMgr {
+    public DBMgr(){
+        DB DB = new DB();
+    }
     public User getUser(String uid) {
         if ( ! DB.users.containsKey(uid)) {
             return null;
@@ -118,12 +121,13 @@ class User {
 }
 
 class DB {
-    public static Map<String, User> users = new HashMap<String, User>(){{
+    public static Map<String, User> users = new HashMap<String, User>();
+    public DB(){
         User d1 = new User("luke","123");
         User d2 = new User("orange","456");
-        put("luke", d1);
-        put("orange", d2);
-    }};
+        users.put("luke", d1);
+        users.put("orange", d2);
+    }
 }
 
 class WelcomePage extends JFrame {

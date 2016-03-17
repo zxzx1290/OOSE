@@ -60,7 +60,7 @@ class Duck extends Bird {
 	}
 }
 
-
+ 
 public class BirdTest {
 	public static void main(String args[]){
 		Bird crow = new Crow();

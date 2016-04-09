@@ -23,6 +23,7 @@ interface Element{
 }
 
 class City implements Element{
+    //compoent
     ArrayList<Element> places = new ArrayList<Element>();
 
     public City(){

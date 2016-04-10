@@ -12,6 +12,7 @@ interface Menu{
 }
 
 class MeatIterator implements IteratorInterface{
+    //Iterator1
     private String[] menuItems;
     private int position = 0;
 
@@ -34,6 +35,7 @@ class MeatIterator implements IteratorInterface{
 }
 
 class VegetableIterator implements IteratorInterface{
+    //Iterator2
     private ArrayList<String> menuItems;
     private int position = 0;
 
@@ -56,6 +58,7 @@ class VegetableIterator implements IteratorInterface{
 }
 
 class MeatMenu implements Menu{
+    //Aggregate1
     static final int MAX_ITEMS = 10;
     int currentIndex = 0;
     String[] menuItems;
@@ -81,6 +84,7 @@ class MeatMenu implements Menu{
 }
 
 class VegetableMenu implements Menu{
+    //Aggregate2
     ArrayList<String> menuItems;
     public VegetableMenu(){
         menuItems = new ArrayList<String>();

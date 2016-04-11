@@ -1,24 +1,14 @@
-//英文課本版
+//大話版
 import java.util.*;
 
 abstract class VisitorAbstract{
     //Visitor
-    public abstract void visit(City city);
     public abstract void visit(Museum museum);
     public abstract void visit(Park park);
 }
 
-class FirstTimeVisitCity extends VisitorAbstract{
-    //Visitor1
-    public void visit(City city){
-        System.out.println("I'm visiting the city!");
-    }
-    public void visit(Museum museum){};
-    public void visit(Park park){};
-}
 class FirstTimeVisitMuseum extends VisitorAbstract{
     //Visitor2
-    public void visit(City city){};
     public void visit(Museum museum){
         System.out.println("I'm visiting the Museum!");
     }
@@ -26,7 +16,6 @@ class FirstTimeVisitMuseum extends VisitorAbstract{
 }
 class FirstTimeVisitPark extends VisitorAbstract{
     //Visitor3
-    public void visit(City city){};
     public void visit(Museum museum){};
     public void visit(Park park){
         System.out.println("I'm visiting the Park!");
@@ -38,34 +27,44 @@ interface Element{
     public void accept(VisitorAbstract visitor);
 }
 
-class City implements Element{
-    //假設 City 和 Museum 和 Park 都是同一個等級
-    //Element1
+class City {
+    //ObjectStruct
+    ArrayList<Element> places = new ArrayList<Element>();
+    public void add(Element e){
+        places.add(e);
+    }
     public void accept(VisitorAbstract visitor){
-        System.out.println("City is accepting visitor");
+        for(Element e : places){
+            e.accept(visitor);
+        }
     }
 }
-
 class Museum implements Element{
-    //Element2
+    //Element1
     public void accept(VisitorAbstract visitor){
-        System.out.println("Museum is accepting visitor");
         visitor.visit(this);
     }
 }
 
 class Park implements Element{
-    //Element3
+    //Element2
     public void accept(VisitorAbstract visitor){
-        System.out.println("Park is accepting visitor");
         visitor.visit(this);
     }
 }
 
-class Visitor2{
+class Visitor4{
     public static void main(String[] args){
-        FirstTimeVisitMuseum visitor = new FirstTimeVisitMuseum();
-        Museum museum = new Museum();
-        museum.accept(visitor);
+        VisitorAbstract visitorMuseum = new FirstTimeVisitMuseum();
+        VisitorAbstract visitorPark = new FirstTimeVisitPark();
+        City city = new City();
+        System.out.println("---new Museum()---");
+        city.add(new Museum());
+        System.out.println("---new Park()---");
+        city.add(new Park());
+        System.out.println("---accept(visitorMuseum)---");
+        city.accept(visitorMuseum);
+        System.out.println("---accept(visitorPark)---");
+        city.accept(visitorPark);
     }
 }

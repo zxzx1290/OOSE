@@ -1,24 +1,19 @@
-//助教版
+//混合版
 import java.util.*;
 
 interface VisitorInterface{
     //Visitor
-    public void visit(City city);
     public void visit(Museum museum);
     public void visit(Park park);
 }
 
 class FirstTimeVisitor implements VisitorInterface{
-    public void visit(City city){
-        //Visitor1
-        System.out.println("I'm visiting the city!");
-    }
     public void visit(Museum museum){
-        //Visitor2
+        //Visitor1
         System.out.println("I'm visiting the Museum!");
     }
     public void visit(Park park){
-        //Visitor3
+        //Visitor2
         System.out.println("I'm visiting the Park!");
     }
 }
@@ -28,8 +23,8 @@ interface Element{
     public void accept(VisitorInterface visitor);
 }
 
-class City implements Element{
-    //Element1
+class City {
+    //ObjectStruct
     ArrayList<Element> places = new ArrayList<Element>();
 
     public City(){
@@ -37,8 +32,7 @@ class City implements Element{
         places.add(new Park());
     }
     public void accept(VisitorInterface visitor){
-        System.out.println("City is accepting visitor");
-        visitor.visit(this);
+        System.out.println("I'm in City");
         for(Element e : places){
             e.accept(visitor);
         }
@@ -46,7 +40,7 @@ class City implements Element{
 }
 
 class Museum implements Element{
-    //Element2
+    //Element1
     public void accept(VisitorInterface visitor){
         System.out.println("Museum is accepting visitor");
         visitor.visit(this);
@@ -54,14 +48,14 @@ class Museum implements Element{
 }
 
 class Park implements Element{
-    //Element3
+    //Element2
     public void accept(VisitorInterface visitor){
         System.out.println("Park is accepting visitor");
         visitor.visit(this);
     }
 }
 
-class Visitor{
+class Visitor3{
     public static void main(String[] args){
         FirstTimeVisitor visitor = new FirstTimeVisitor();
         City city = new City();

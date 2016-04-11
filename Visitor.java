@@ -1,6 +1,7 @@
 import java.util.*;
 
 interface VisitorInterface{
+    //Visitor
     public void visit(City city);
     public void visit(Museum museum);
     public void visit(Park park);
@@ -8,22 +9,26 @@ interface VisitorInterface{
 
 class FirstTimeVisitor implements VisitorInterface{
     public void visit(City city){
+        //Visitor1
         System.out.println("I'm visiting the city!");
     }
     public void visit(Museum museum){
+        //Visitor2
         System.out.println("I'm visiting the Museum!");
     }
     public void visit(Park park){
+        //Visitor3
         System.out.println("I'm visiting the Park!");
     }
 }
 
 interface Element{
+    //CompIF
     public void accept(VisitorInterface visitor);
 }
 
 class City implements Element{
-    //compoent
+    //Compoent
     ArrayList<Element> places = new ArrayList<Element>();
 
     public City(){
@@ -40,6 +45,7 @@ class City implements Element{
 }
 
 class Museum implements Element{
+    //Compoent
     public void accept(VisitorInterface visitor){
         System.out.println("Museum is accepting visitor");
         visitor.visit(this);
@@ -47,6 +53,7 @@ class Museum implements Element{
 }
 
 class Park implements Element{
+    //Compoent
     public void accept(VisitorInterface visitor){
         System.out.println("Park is accepting visitor");
         visitor.visit(this);

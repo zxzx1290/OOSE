@@ -1,13 +1,13 @@
 import java.util.*;
 
-abstract class VisitorInterface{
+abstract class VisitorAbstract{
     //Visitor
     public abstract void visit(City city);
     public abstract void visit(Museum museum);
     public abstract void visit(Park park);
 }
 
-class FirstTimeVisitCity extends VisitorInterface{
+class FirstTimeVisitCity extends VisitorAbstract{
     //Visitor1
     public void visit(City city){
         System.out.println("I'm visiting the city!");
@@ -15,7 +15,7 @@ class FirstTimeVisitCity extends VisitorInterface{
     public void visit(Museum museum){};
     public void visit(Park park){};
 }
-class FirstTimeVisitMuseum extends VisitorInterface{
+class FirstTimeVisitMuseum extends VisitorAbstract{
     //Visitor2
     public void visit(City city){};
     public void visit(Museum museum){
@@ -23,7 +23,7 @@ class FirstTimeVisitMuseum extends VisitorInterface{
     }
     public void visit(Park park){};
 }
-class FirstTimeVisitPark extends VisitorInterface{
+class FirstTimeVisitPark extends VisitorAbstract{
     //Visitor3
     public void visit(City city){};
     public void visit(Museum museum){};
@@ -34,19 +34,19 @@ class FirstTimeVisitPark extends VisitorInterface{
 
 interface Element{
     //CompIF
-    public void accept(VisitorInterface visitor);
+    public void accept(VisitorAbstract visitor);
 }
 
 class City implements Element{
     //Compoent1
-    public void accept(VisitorInterface visitor){
+    public void accept(VisitorAbstract visitor){
         System.out.println("City is accepting visitor");
     }
 }
 
 class Museum implements Element{
     //Compoent2
-    public void accept(VisitorInterface visitor){
+    public void accept(VisitorAbstract visitor){
         System.out.println("Museum is accepting visitor");
         visitor.visit(this);
     }
@@ -54,7 +54,7 @@ class Museum implements Element{
 
 class Park implements Element{
     //Compoent3
-    public void accept(VisitorInterface visitor){
+    public void accept(VisitorAbstract visitor){
         System.out.println("Park is accepting visitor");
         visitor.visit(this);
     }

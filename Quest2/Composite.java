@@ -22,7 +22,7 @@ class CompositeClass extends Component{
         childComposites.add(child);
     }
     public void printStruct(String preStr){
-        System.out.println(preStr+"-"+name);
+        System.out.println(preStr+"+"+name);
         if(this.childComposites!=null){
             preStr+="  ";
             for(Component c : childComposites){

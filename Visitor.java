@@ -28,7 +28,7 @@ interface Element{
 }
 
 class City implements Element{
-    //Compoent
+    //Compoent1
     ArrayList<Element> places = new ArrayList<Element>();
 
     public City(){
@@ -45,7 +45,7 @@ class City implements Element{
 }
 
 class Museum implements Element{
-    //Compoent
+    //Compoent2
     public void accept(VisitorInterface visitor){
         System.out.println("Museum is accepting visitor");
         visitor.visit(this);
@@ -53,7 +53,7 @@ class Museum implements Element{
 }
 
 class Park implements Element{
-    //Compoent
+    //Compoent3
     public void accept(VisitorInterface visitor){
         System.out.println("Park is accepting visitor");
         visitor.visit(this);

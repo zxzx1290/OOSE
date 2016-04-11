@@ -22,9 +22,9 @@ class FirstTimeVisitPark extends VisitorAbstract{
     }
 }
 
-interface Element{
+abstract class Element{
     //CompIF
-    public void accept(VisitorAbstract visitor);
+    public abstract void accept(VisitorAbstract visitor);
 }
 
 class City {
@@ -39,14 +39,14 @@ class City {
         }
     }
 }
-class Museum implements Element{
+class Museum extends Element{
     //Element1
     public void accept(VisitorAbstract visitor){
         visitor.visit(this);
     }
 }
 
-class Park implements Element{
+class Park extends Element{
     //Element2
     public void accept(VisitorAbstract visitor){
         visitor.visit(this);

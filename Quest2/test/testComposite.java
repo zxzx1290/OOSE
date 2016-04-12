@@ -48,10 +48,9 @@ public class testComposite{
         Component leaf2 = new Leaf("1-1-1-e");
         Component leaf3 = new Leaf("1-1-1-e2");
         Component leaf4 = new Leaf("1-2-e");
-        Component leaf5 = new Leaf("1-3-e");
-
-        Component leaf6 = new Leaf("1");
-        Component leaf7 = new Leaf("1");
+        Component leaf5 = new Leaf("1-2-e2");
+        Component leaf6 = new Leaf("1-3-e");
+        Component leaf7 = new Leaf("1-3-e2");
 
         root.addChild(sub1);
         root.addChild(sub2);
@@ -64,7 +63,10 @@ public class testComposite{
         sub11.addChild(leaf3);
 
         sub2.addChild(leaf4);
-        sub3.addChild(leaf5);
+        sub2.addChild(leaf5);
+        
+        sub3.addChild(leaf6);
+        sub3.addChild(leaf7);
 
         root.printStruct("");
     }

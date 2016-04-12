@@ -1,12 +1,12 @@
 import java.util.*;
 
-abstract class Component{
+interface Component{
     //Component
-    public abstract void printStruct(String preStr);
-    public abstract void addChild(Component child);
+    public void printStruct(String preStr);
+    public void addChild(Component child);
 }
 
-class CompositeClass extends Component{
+class CompositeClass implements Component{
     //Composite
     private ArrayList<Component> childComposites = null;
     private String name="";
@@ -32,7 +32,7 @@ class CompositeClass extends Component{
     }
 }
 
-class Leaf extends Component{
+class Leaf implements Component{
     //Leaf
     private String name="";
 

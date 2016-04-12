@@ -3,22 +3,26 @@ import java.util.*;
 
 abstract class VisitorAbstract{
     //Visitor
-    public abstract void visit(Museum museum);
-    public abstract void visit(Park park);
+    public abstract void visitMuseum(Museum museum);
+    public abstract void visitPark(Park park);
 }
 
-class FirstTimeVisitMuseum extends VisitorAbstract{
-    //Visitor2
-    public void visit(Museum museum){
+class FirstTimeVisitCity extends VisitorAbstract{
+    //Visitor1
+    public void visitMuseum(Museum museum){
         System.out.println("I'm visiting the Museum!");
     }
-    public void visit(Park park){};
-}
-class FirstTimeVisitPark extends VisitorAbstract{
-    //Visitor3
-    public void visit(Museum museum){};
-    public void visit(Park park){
+    public void visitPark(Park park){
         System.out.println("I'm visiting the Park!");
+    }
+}
+class SecondTimeVisitCity extends VisitorAbstract{
+    //Visitor2
+    public void visitMuseum(Museum museum){
+        System.out.println("I'm visiting the Museum second!");
+    }
+    public void visitPark(Park park){
+        System.out.println("I'm visiting the Park second!");
     }
 }
 
@@ -42,29 +46,29 @@ class City {
 class Museum extends Element{
     //Element1
     public void accept(VisitorAbstract visitor){
-        visitor.visit(this);
+        visitor.visitMuseum(this);
     }
 }
 
 class Park extends Element{
     //Element2
     public void accept(VisitorAbstract visitor){
-        visitor.visit(this);
+        visitor.visitPark(this);
     }
 }
 
 class Visitor4{
     public static void main(String[] args){
-        VisitorAbstract visitorMuseum = new FirstTimeVisitMuseum();
-        VisitorAbstract visitorPark = new FirstTimeVisitPark();
+        VisitorAbstract firstTimeVisit = new FirstTimeVisitCity();
+        VisitorAbstract secondTimeVisit = new SecondTimeVisitCity();
         City city = new City();
         System.out.println("---new Museum()---");
         city.add(new Museum());
         System.out.println("---new Park()---");
         city.add(new Park());
-        System.out.println("---accept(visitorMuseum)---");
-        city.accept(visitorMuseum);
-        System.out.println("---accept(visitorPark)---");
-        city.accept(visitorPark);
+        System.out.println("---accept(firstTimeVisit)---");
+        city.accept(firstTimeVisit);
+        System.out.println("---accept(secondTimeVisit)---");
+        city.accept(secondTimeVisit);
     }
 }

@@ -1,13 +1,13 @@
 //大話版
 import java.util.*;
 
-abstract class VisitorAbstract{
+interface VisitorAbstract{
     //Visitor
-    public abstract void visitMuseum(Museum museum);
-    public abstract void visitPark(Park park);
+    public void visitMuseum(Museum museum);
+    public void visitPark(Park park);
 }
 
-class FirstTimeVisitCity extends VisitorAbstract{
+class FirstTimeVisitCity implements VisitorAbstract{
     //Visitor1
     public void visitMuseum(Museum museum){
         System.out.println("I'm visiting the Museum!");
@@ -16,7 +16,7 @@ class FirstTimeVisitCity extends VisitorAbstract{
         System.out.println("I'm visiting the Park!");
     }
 }
-class SecondTimeVisitCity extends VisitorAbstract{
+class SecondTimeVisitCity implements VisitorAbstract{
     //Visitor2
     public void visitMuseum(Museum museum){
         System.out.println("I'm visiting the Museum second!");
@@ -26,9 +26,9 @@ class SecondTimeVisitCity extends VisitorAbstract{
     }
 }
 
-abstract class Element{
+interface Element{
     //CompIF
-    public abstract void accept(VisitorAbstract visitor);
+    public void accept(VisitorAbstract visitor);
 }
 
 class City {
@@ -43,14 +43,14 @@ class City {
         }
     }
 }
-class Museum extends Element{
+class Museum implements Element{
     //Element1
     public void accept(VisitorAbstract visitor){
         visitor.visitMuseum(this);
     }
 }
 
-class Park extends Element{
+class Park implements Element{
     //Element2
     public void accept(VisitorAbstract visitor){
         visitor.visitPark(this);

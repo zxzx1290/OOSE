@@ -29,9 +29,9 @@ class NikeShop{
     //context
     private BusinessStrategy strategy;
 
-    public NikeShop(BusinessStrategy _strategy){
+    public NikeShop(BusinessStrategy s){
         //set strategy
-        this.strategy=_strategy;
+        this.strategy=s;
     }
     //execute strategy
     public void operate(){

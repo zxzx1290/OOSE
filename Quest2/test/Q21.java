@@ -47,7 +47,7 @@ class State extends DiagramElement {
 	}
 
 	public boolean intersect(Point p){
-		/*set the intersect point*/
+		/*check if intersect to other State*/
 	}
 }
 
@@ -63,7 +63,7 @@ abstract class Transition extends DiagramElement{
 	}
 
 	public boolean intersect(Point p){
-		/*set the intersect point*/
+		/*check if intersect to other State*/
 	}
 }
 
@@ -105,6 +105,6 @@ class StateDiagram extends DiagramElement{
 	}
 
 	public boolean intersect(Point p){
-		/*set the intersect point*/
+		/*check if intersect to other State*/
 	}
 }

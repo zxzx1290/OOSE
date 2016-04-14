@@ -1,4 +1,3 @@
-class Element{}
 class Stack{
 	Delegate d = new Delegate();
 	public void push(){

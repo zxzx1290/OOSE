@@ -1,5 +1,6 @@
 import java.awt.*;
-import java.util.*;
+import java.util.Iterator;
+import java.util.ArrayList;
 
 interface AbstractFactory{
 	public State createState(Point p);
@@ -35,20 +36,24 @@ interface DiagramElement{
 	public void draw(Graphics g);
 	public void add(DiagramElement e);
 }
-interface State implements DiagramElement{
-	public void draw(Graphics g);
-	public void add(DiagramElement e);
+abstract class State implements DiagramElement{
+	public abstract void draw(Graphics g);
+	public abstract void add(DiagramElement e);
 }
-interface Transition implements DiagramElement{
-	/*public void draw(Graphics g);
-	public void add(DiagramElement e);*/
+abstract class Transition implements DiagramElement{
+	public abstract void draw(Graphics g);
+	public abstract void add(DiagramElement e);
 }
-interface StateDiagram implements DiagramElement{
-	/*public void draw(Graphics g);
-	public void add(DiagramElement e);*/
+abstract class StateDiagram implements DiagramElement{
+	public abstract void draw(Graphics g);
+	public abstract void add(DiagramElement e);
 }
 
-class UML1State implements State{
+class UML1State extends State{
+	Point p;
+	public UML1State(Point p){
+		this.p=p;
+	}
 	public void add(DiagramElement e){
 		throw new UnsupportedOperationException();
 	}
@@ -57,7 +62,11 @@ class UML1State implements State{
 		System.out.println("UML1StateDraw");
 	}
 }
-class UML2State implements State{
+class UML2State extends State{
+	Point p;
+	public UML2State(Point p){
+		this.p=p;
+	}
 	public void add(DiagramElement e){
 		throw new UnsupportedOperationException();
 	}
@@ -66,7 +75,11 @@ class UML2State implements State{
 		System.out.println("UML2StateDraw");
 	}
 }
-class UML1Transition implements Transition{
+class UML1Transition extends Transition{
+	Point p;
+	public UML1Transition(Point p){
+		this.p=p;
+	}
 	public void add(DiagramElement e){
 		throw new UnsupportedOperationException();
 	}
@@ -75,8 +88,12 @@ class UML1Transition implements Transition{
 		System.out.println("UM1TransitionDraw");
 	}
 }
-class UML2Transition implements Transition{
-	public void ad(DiagramElement e){
+class UML2Transition extends Transition{
+	Point p;
+	public UML2Transition(Point p){
+		this.p=p;
+	}
+	public void add(DiagramElement e){
 		throw new UnsupportedOperationException();
 	}
 	public void draw(Graphics g){
@@ -84,10 +101,14 @@ class UML2Transition implements Transition{
 		System.out.println("UML2TransitionDraw");
 	}
 }
-class UML1StateDiagram implements StateDiagram{
+class UML1StateDiagram extends StateDiagram{
 	ArrayList<DiagramElement> um1a = new ArrayList<DiagramElement>();
+	Point p;
+	public UML1StateDiagram(Point p){
+		this.p=p;
+	}
 	public void add(DiagramElement e){
-		umla.add(e);
+		um1a.add(e);
 	}
 	public void draw(Graphics g){
 		/*draw*/
@@ -98,8 +119,12 @@ class UML1StateDiagram implements StateDiagram{
 		}
 	}
 }
-class UML2StateDiagram implements StateDiagram{
+class UML2StateDiagram extends StateDiagram{
 	ArrayList<DiagramElement> um2a = new ArrayList<DiagramElement>();
+	Point p;
+	public UML2StateDiagram(Point p){
+		this.p=p;
+	}
 	public void add(DiagramElement e){
 		um2a.add(e);
 	}
@@ -108,22 +133,25 @@ class UML2StateDiagram implements StateDiagram{
 		System.out.println("UML2StateDiagramDraw");
 		Iterator iterator = um2a.iterator();
 		while(iterator.hasNext()){
-			((DiagramElement)itrator.next()).draw(g);
+			((DiagramElement)iterator.next()).draw(g);
 		}
 	}
 }
 class EditDiagramController{
 	AbstractFactory factory;
 	DiagramElement de;
-	public setFactory(AbstractFactory f){
+	public void setFactory(AbstractFactory f){
 		this.factory=f;
 	}
-	public addState(Point p){
+	public void addState(Point p){
 		State s = factory.createState(p);
 		if(de==null){
 			de = factory.createDiagram(p);
 		}
 		de.add(s);
+	}
+	public void draw(Graphics g){
+		de.draw(g);
 	}
 }
 

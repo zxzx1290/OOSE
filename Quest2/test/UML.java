@@ -36,20 +36,20 @@ interface DiagramElement{
 	public void draw(Graphics g);
 	public void add(DiagramElement e);
 }
-abstract class State implements DiagramElement{
+interface State extends DiagramElement{
 	public abstract void draw(Graphics g);
 	public abstract void add(DiagramElement e);
 }
-abstract class Transition implements DiagramElement{
+interface Transition extends DiagramElement{
 	public abstract void draw(Graphics g);
 	public abstract void add(DiagramElement e);
 }
-abstract class StateDiagram implements DiagramElement{
+interface StateDiagram extends DiagramElement{
 	public abstract void draw(Graphics g);
 	public abstract void add(DiagramElement e);
 }
 
-class UML1State extends State{
+class UML1State implements State{
 	Point p;
 	public UML1State(Point p){
 		this.p=p;
@@ -62,7 +62,7 @@ class UML1State extends State{
 		System.out.println("UML1StateDraw");
 	}
 }
-class UML2State extends State{
+class UML2State implements State{
 	Point p;
 	public UML2State(Point p){
 		this.p=p;
@@ -75,7 +75,7 @@ class UML2State extends State{
 		System.out.println("UML2StateDraw");
 	}
 }
-class UML1Transition extends Transition{
+class UML1Transition implements Transition{
 	Point p;
 	public UML1Transition(Point p){
 		this.p=p;
@@ -88,7 +88,7 @@ class UML1Transition extends Transition{
 		System.out.println("UM1TransitionDraw");
 	}
 }
-class UML2Transition extends Transition{
+class UML2Transition implements Transition{
 	Point p;
 	public UML2Transition(Point p){
 		this.p=p;
@@ -101,7 +101,7 @@ class UML2Transition extends Transition{
 		System.out.println("UML2TransitionDraw");
 	}
 }
-class UML1StateDiagram extends StateDiagram{
+class UML1StateDiagram implements StateDiagram{
 	ArrayList<DiagramElement> um1a = new ArrayList<DiagramElement>();
 	Point p;
 	public UML1StateDiagram(Point p){
@@ -119,7 +119,7 @@ class UML1StateDiagram extends StateDiagram{
 		}
 	}
 }
-class UML2StateDiagram extends StateDiagram{
+class UML2StateDiagram implements StateDiagram{
 	ArrayList<DiagramElement> um2a = new ArrayList<DiagramElement>();
 	Point p;
 	public UML2StateDiagram(Point p){

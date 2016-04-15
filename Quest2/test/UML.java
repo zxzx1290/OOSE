@@ -37,16 +37,16 @@ interface DiagramElement{
 	public void add(DiagramElement e);
 }
 interface State extends DiagramElement{
-	public abstract void draw(Graphics g);
-	public abstract void add(DiagramElement e);
+	public void draw(Graphics g);
+	public void add(DiagramElement e);
 }
 interface Transition extends DiagramElement{
-	public abstract void draw(Graphics g);
-	public abstract void add(DiagramElement e);
+	public void draw(Graphics g);
+	public void add(DiagramElement e);
 }
 interface StateDiagram extends DiagramElement{
-	public abstract void draw(Graphics g);
-	public abstract void add(DiagramElement e);
+	public void draw(Graphics g);
+	public void add(DiagramElement e);
 }
 
 class UML1State implements State{

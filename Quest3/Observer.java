@@ -29,7 +29,7 @@ class HeadHunter implements Subject {
         notifyAllObserver();
     }
     public String toString() {
-        //ArrayList auto toString
+        //ArrayList auto/manually toString
         return jobs.toString();
     }
 }
@@ -42,7 +42,7 @@ class JobSeeker implements ObserverInterface {
     public void update(Subject s) {
         System.out.println(this.name+" got notified!");
         //Subject s do something
-        System.out.println(s);
+        System.out.println(s.toString());
     }
 }
 

@@ -1,7 +1,7 @@
 import java.util.*;
 
 interface FlyweightInterface {
-    public void operation(String state);
+    public void operation(String exstate);
 }
 
 class FlyweightFactory {
@@ -22,9 +22,9 @@ class ConcreteFlyweight implements FlyweightInterface {
     public ConcreteFlyweight(String state) {
         this.intrinsicState = state;
     }
-    public void operation(String state) {
+    public void operation(String exstate) {
         System.out.println("Intrinsic State = "+this.intrinsicState);
-        System.out.println("Extrinsic State = "+state);
+        System.out.println("Extrinsic State = "+exstate);
     }
 }
 
@@ -32,7 +32,7 @@ public class Flyweight {
     public static void main(String[] args) {
         FlyweightFactory factory = new FlyweightFactory();
         FlyweightInterface fly;
-        
+
         System.out.println("Try Get Object a");
         fly = factory.factory("a");
         fly.operation("red call\n");

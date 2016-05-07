@@ -41,6 +41,7 @@ class JobSeeker implements ObserverInterface {
     }
     public void update(Subject s) {
         System.out.println(this.name+" got notified!");
+        //Subject s do something
         System.out.println(s);
     }
 }

@@ -46,9 +46,11 @@ class EditorGUI extends JFrame{
 class EditDiagramController {
     private DiagramElement component;
     public void stateBtnClicked(ActionEvent e){
+        //Controller call model(DiagramElement) to do somthing
         System.out.println("stateBtnClicked Controller received");
     }
     public void transBtnClicked(ActionEvent e){
+        //Controller call model(DiagramElement) to do somthing
         System.out.println("transBtnClicked Controller received");
     }
 }
@@ -60,3 +62,5 @@ class Q31 {
         gui.setVisible(true);
     }
 }
+
+class DiagramElement { /*DiagramElement class*/ }

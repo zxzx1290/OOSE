@@ -1,18 +1,12 @@
-import java.util.ArrayList;
-interface ActionListener {
-    public void actionPerformed(ActionEvent e);
-    public String getName();
-}
+import javax.swing.*;
+import java.awt.*;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 class StateButtonListener implements ActionListener {
     private EditDiagramController edc;
-    private String name;
-    public StateButtonListener(String s, EditDiagramController edc){
-        this.name=s;
-        this.edc=edc;
-    }
-    public String getName(){
-        return this.name;
+    public StateButtonListener(EditDiagramController e){
+        this.edc=e;
     }
     public void actionPerformed(ActionEvent e){
         System.out.println("StateButton Clicked");
@@ -22,35 +16,35 @@ class StateButtonListener implements ActionListener {
 
 class TransButtonListener implements ActionListener {
     private EditDiagramController edc;
-    private String name;
-    public TransButtonListener(String s, EditDiagramController edc){
-        this.name=s;
-        this.edc=edc;
-    }
-    public String getName(){
-        return this.name;
+    public TransButtonListener(EditDiagramController e){
+        this.edc=e;
     }
     public void actionPerformed(ActionEvent e){
-        System.out.println("TransButtonButton Clicked");
+        System.out.println("TransButton Clicked");
         edc.transBtnClicked(e);
     }
 }
 
-class EditorGUI {
-    private ArrayList<ActionListener> al = new ArrayList<ActionListener>();
-    public void setListener(ActionListener a){
-        al.add(a);
-    }
-    public void jButtonClick(String ss){
-        for(ActionListener a : al){
-            if(a.getName().equals(ss)){
-                a.actionPerformed(new ActionEvent());
-            }
-        }
+class EditorGUI extends JFrame{
+    public JPanel gpanel;
+    private JButton stateBtn;
+    private JButton transBtn;
+    public EditorGUI(EditDiagramController edc){
+        setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        setBounds(100,100,100,200);
+        gpanel = new JPanel();
+        getContentPane().add(gpanel);
+        transBtn = new JButton("Trans");
+        transBtn.addActionListener(new TransButtonListener(edc));
+        gpanel.add(transBtn);
+        stateBtn = new JButton("States");
+        stateBtn.addActionListener(new StateButtonListener(edc));
+        gpanel.add(stateBtn);
     }
 }
 
 class EditDiagramController {
+    private DiagramElement component;
     public void stateBtnClicked(ActionEvent e){
         System.out.println("stateBtnClicked Controller received");
     }
@@ -61,13 +55,8 @@ class EditDiagramController {
 
 class Q31 {
     public static void main(String[] args) {
-        EditorGUI gui = new EditorGUI();
         EditDiagramController edc = new EditDiagramController();
-        gui.setListener(new StateButtonListener("State",edc));
-        gui.setListener(new TransButtonListener("Trans",edc));
-        gui.jButtonClick("State");
-        gui.jButtonClick("Trans");
+        EditorGUI gui = new EditorGUI(edc);
+        gui.setVisible(true);
     }
 }
-
-class ActionEvent {}

@@ -1,7 +1,7 @@
 import java.util.ArrayList;
 
 interface DiagramElement {
-    public String draw(DiagramElement g);
+    public void draw();
 }
 
 class StateDiagram implements DiagramElement {
@@ -9,25 +9,24 @@ class StateDiagram implements DiagramElement {
     public void addElement(DiagramElement d){
         arr.add(d);
     }
-    public String draw(DiagramElement g){
-        /*System.out.println("StateDiagram draw");*/
+    public void draw(){
+        System.out.print("StateDiagram draw");
         String s="";
         for(DiagramElement d : arr){
-            s+=d.draw(g);
+            d.draw();
         }
-        return s;
     }
 }
 
 class State implements DiagramElement {
-    public String draw(DiagramElement g){
-        return "\nState draw";
+    public void draw(){
+        System.out.print("\nState draw ");
     }
 }
 
 class Transition implements DiagramElement {
-    public String draw(DiagramElement g){
-        return "\nTransition draw";
+    public void draw(){
+        System.out.print("\nTransition draw ");
     }
 }
 
@@ -36,31 +35,34 @@ abstract class Decorator implements DiagramElement {
     public Decorator(DiagramElement d){
         this.de=d;
     }
-    public String draw(DiagramElement g){ return ""; }
+    public void draw(){
+        this.de.draw();
+    }
 }
 
 class Scroller extends Decorator {
     public Scroller(DiagramElement g){
         super(g);
     }
-    public String draw(DiagramElement g){
-        return de.draw(g)+drawScroller();
+    public void draw(){
+        super.draw();
+        drawScroller();
     }
-    public String drawScroller(){
-        return " with Scroller";
+    public void drawScroller(){
+        System.out.print("with Scroller");
     }
 }
 
 class Border extends Decorator {
     public Border(DiagramElement g){
         super(g);
-        /*System.out.println(g.draw(g));*/
     }
-    public String draw(DiagramElement g){
-        return de.draw(g)+drawBorder();
+    public void draw(){
+        super.draw();
+        drawScroller();
     }
-    public String drawBorder(){
-        return " with Border";
+    public void drawScroller(){
+        System.out.print("with Border");
     }
 }
 
@@ -76,6 +78,6 @@ public class Q32 {
         t1 = new Border(t1);
         t1 = new Scroller(t1);
         sd.addElement(t1);
-        System.out.println(sd.draw(new State()));
+        sd.draw();
     }
 }

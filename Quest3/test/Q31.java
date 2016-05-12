@@ -38,7 +38,7 @@ class EditorGUI extends JFrame{
         transBtn = new JButton("Trans");
         transBtn.addActionListener(new TransButtonListener(edc));
         gpanel.add(transBtn);
-        
+
         stateBtn = new JButton("States");
         stateBtn.addActionListener(new StateButtonListener(edc));
         gpanel.add(stateBtn);

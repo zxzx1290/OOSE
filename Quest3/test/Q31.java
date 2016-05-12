@@ -34,9 +34,11 @@ class EditorGUI extends JFrame{
         setBounds(100,100,100,200);
         gpanel = new JPanel();
         getContentPane().add(gpanel);
+
         transBtn = new JButton("Trans");
         transBtn.addActionListener(new TransButtonListener(edc));
         gpanel.add(transBtn);
+        
         stateBtn = new JButton("States");
         stateBtn.addActionListener(new StateButtonListener(edc));
         gpanel.add(stateBtn);
@@ -63,4 +65,4 @@ class Q31 {
     }
 }
 
-class DiagramElement { /*DiagramElement class*/ }
+interface DiagramElement { /*DiagramElement interface*/ }

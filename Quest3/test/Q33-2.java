@@ -1,0 +1,21 @@
+if(promoted==true){
+    if(10%rasied==false){
+        Quit
+    }else{
+        Stay
+    }
+}else{
+    if(workInterset==true){
+        if(10%rasied==true){
+            Stay
+        }else{
+            Quit
+        }
+    }else{
+        if(ownOffice==false){
+            Quit
+        }else{
+            Stay
+        }
+    }
+}

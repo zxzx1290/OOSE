@@ -20,7 +20,6 @@ class RadarChart implements Observer {
 
 class Observable {
     private ArrayList<Observer> observers = new ArrayList<>();
-    private ArrayList<Object> objects = new ArrayList<>();
     public void add(Observer o){
         observers.add(o);
     }
@@ -28,7 +27,6 @@ class Observable {
         //remove observer
     }
     public void notifyObservers(Object arg){
-        objects.add(arg);
         for(Observer observer : observers){
             observer.update(this,arg);
         }
@@ -39,11 +37,17 @@ class Observable {
 }
 
 class DataTable extends Observable {
+    private ArrayList<Object> objects = new ArrayList<>();
+    public void addData(Object o){
+        objects.add(o);
+        notifyObservers(o);
+    }
     public DataTable(){
         add(new HistogramChart());
         add(new RadarChart());
-        notifyObservers(new Object());
-        notifyObservers(new Object());
+
+        addData(new Object());
+        addData(new Object());
     }
 }
 

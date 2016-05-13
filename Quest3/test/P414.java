@@ -24,7 +24,7 @@ class Observable {
         observers.add(o);
     }
     public void remove(Observer o){
-        //remove observer
+        observers.remove(o);
     }
     public void notifyObservers(Object arg){
         for(Observer observer : observers){

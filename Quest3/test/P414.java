@@ -34,6 +34,9 @@ class Observable {
     public void setChange(){
         //Marks this Observable object as having been changed; the hasChanged method will now return true.
     }
+    public void hasChanged(){
+        //if this Observable object having been changed; will return true.
+    }
 }
 
 class DataTable extends Observable {

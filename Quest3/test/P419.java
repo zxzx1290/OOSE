@@ -21,15 +21,12 @@ class Helper {
 }
 
 class EditorHelper extends Helper {
-    public void create(Helper suc, String info){
-        this.successor=suc;
-        this.info=info;
-    }
     public void help(){
-        showHelp();
-    }
-    public boolean hasHelp(){
-        return false;
+        if(hasHelp()){
+            showHelp();
+        }else{
+            super.help();
+        }
     }
     public void showHelp(){
         System.out.println(this.info);

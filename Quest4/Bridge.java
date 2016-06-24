@@ -1,17 +1,5 @@
-class Bridge{
-    public static void main(String[] args) {
-        RemoteControl remoteControl = new ConcreteRemote(new Samung_tv());
-        remoteControl.on();
-        remoteControl.next();
-        remoteControl.off();
-        remoteControl.setTV(new Sony_tv());
-        remoteControl.on();
-        remoteControl.next();
-        remoteControl.off();
-    }
-}
-
 abstract class RemoteControl{
+    //Abstraction
     protected TV tv;
     public abstract void on();
     public abstract void off();
@@ -25,6 +13,7 @@ abstract class RemoteControl{
 }
 
 class ConcreteRemote extends RemoteControl{
+    //RefinedAbstraction
     ConcreteRemote(TV tv){
         super(tv);
     }
@@ -40,12 +29,14 @@ class ConcreteRemote extends RemoteControl{
 }
 
 interface TV{
+    //Implementor
     public void turnOn();
     public void turnOff();
     public void nextChannel();
 }
 
 class Samung_tv implements TV{
+    //ConcreteImplementor
     Samung_tv(){
         System.out.println("Samung_tv constructed");
     }
@@ -61,6 +52,7 @@ class Samung_tv implements TV{
 }
 
 class Sony_tv implements TV{
+    //ConcreteImplementor
     Sony_tv(){
         System.out.println("Sony_tv constructed");
     }
@@ -72,5 +64,19 @@ class Sony_tv implements TV{
     }
     public void nextChannel(){
         System.out.println("Sony_tv next Channel");
+    }
+}
+
+class Bridge{
+    public static void main(String[] args) {
+        RemoteControl remoteControl = new ConcreteRemote(new Samung_tv());
+        remoteControl.on();
+        remoteControl.next();
+        remoteControl.off();
+
+        remoteControl.setTV(new Sony_tv());
+        remoteControl.on();
+        remoteControl.next();
+        remoteControl.off();
     }
 }
